@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
-export const WritingOnBoardMeme = ({ setMemeUrl }) => {
+export const WritingOnBoardMeme = ({ setMemeUrl }:any) => {
   const [text1, setText1] = useState('')
   const [text2, setText2] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault()
     const url = `https://api.nexoracle.com/memes/writing-on-board?apikey=4aeb57e3ed0f238762&text1=${encodeURIComponent(text1)}&text2=${encodeURIComponent(text2)}`
     setMemeUrl(url)

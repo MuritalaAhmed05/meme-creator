@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-export const ShitMeme = ({ setMemeUrl }) => {
+export const ShitMeme = ({ setMemeUrl }:any) => {
   const [img, setImg] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault()
     const url = `https://api.nexoracle.com/memes/shit?apikey=4aeb57e3ed0f238762&img=${encodeURIComponent(img)}`
     setMemeUrl(url)

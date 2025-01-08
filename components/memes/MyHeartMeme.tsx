@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-export const MyHeartMeme = ({ setMemeUrl }) => {
+export const MyHeartMeme = ({ setMemeUrl }:any) => {
   const [text1, setText1] = useState('')
   const [text2, setText2] = useState('')
   const [text3, setText3] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault()
     const url = `https://api.nexoracle.com/memes/my-heart?apikey=4aeb57e3ed0f238762&text1=${encodeURIComponent(text1)}&text2=${encodeURIComponent(text2)}&text3=${encodeURIComponent(text3)}`
     setMemeUrl(url)

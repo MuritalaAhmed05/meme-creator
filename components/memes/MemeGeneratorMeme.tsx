@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-export const MemeGeneratorMeme = ({ setMemeUrl }) => {
+export const MemeGeneratorMeme = ({ setMemeUrl }:any) => {
   const [text1, setText1] = useState('')
   const [text2, setText2] = useState('')
   const [img, setImg] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault()
     const url = `https://api.nexoracle.com/memes/meme-generator?apikey=4aeb57e3ed0f238762&text1=${encodeURIComponent(text1)}&text2=${encodeURIComponent(text2)}&img=${encodeURIComponent(img)}`
     setMemeUrl(url)

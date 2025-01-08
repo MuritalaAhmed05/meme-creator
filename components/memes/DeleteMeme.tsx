@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-export const DeleteMeme = ({ setMemeUrl }) => {
+export const DeleteMeme = ({ setMemeUrl }:any) => {
   const [img, setImg] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault()
     const url = `https://api.nexoracle.com/memes/delete?apikey=4aeb57e3ed0f238762&img=${encodeURIComponent(img)}`
     setMemeUrl(url)

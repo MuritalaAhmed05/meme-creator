@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-export const MemePreview = ({ memeUrl }) => {
+export const MemePreview = ({ memeUrl }:any) => {
   return (
     <div className="bg-white p-4 rounded-lg shadow">
       <h2 className="text-xl font-semibold mb-4">Meme Preview</h2>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 
-export const CheersMeme = ({ setMemeUrl }) => {
+export const CheersMeme = ({ setMemeUrl }:any) => {
   const [text1, setText1] = useState('')
   const [text2, setText2] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault()
     const url = `https://api.nexoracle.com/memes/cheers?apikey=4aeb57e3ed0f238762&text1=${encodeURIComponent(text1)}&text2=${encodeURIComponent(text2)}`
     setMemeUrl(url)

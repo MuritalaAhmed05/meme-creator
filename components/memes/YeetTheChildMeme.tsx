@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-export const YeetTheChildMeme = ({ setMemeUrl }) => {
+export const YeetTheChildMeme = ({ setMemeUrl }:any) => {
   const [text, setText] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault()
     const url = `https://api.nexoracle.com/memes/yeet-the-child?apikey=4aeb57e3ed0f238762&text=${encodeURIComponent(text)}`
     setMemeUrl(url)

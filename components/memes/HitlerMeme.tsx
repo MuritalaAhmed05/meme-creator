@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
-export const HitlerMeme = ({ setMemeUrl }) => {
+export const HitlerMeme = ({ setMemeUrl }:any) => {
   const [img, setImg] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e:any) => {
     e.preventDefault()
     const url = `https://api.nexoracle.com/memes/hitler?apikey=4aeb57e3ed0f238762&img=${encodeURIComponent(img)}`
     setMemeUrl(url)

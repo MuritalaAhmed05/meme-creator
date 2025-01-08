@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const BaseMemeForm = ({ children, onSubmit }) => {
+export const BaseMemeForm = ({ children, onSubmit }:any) => {
   return (
     <form onSubmit={onSubmit} className="bg-white p-4 rounded-lg shadow">
       {children}
