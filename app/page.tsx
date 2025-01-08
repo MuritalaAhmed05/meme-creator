@@ -26,6 +26,9 @@ import { UpsetStudentsMeme } from '@/components/memes/UpsetStudentsMeme'
 import { WritingOnBoardMeme } from '@/components/memes/WritingOnBoardMeme'
 import { YeetTheChildMeme } from '@/components/memes/YeetTheChildMeme'
 
+
+type MemeKey = keyof typeof memeComponents;
+
 const memeComponents = {
   'Affect': AffectMeme,
   'Burn the Paper': BurnThePaperMeme,
@@ -52,9 +55,10 @@ const memeComponents = {
 }
 
 export default function Home() {
-  const [selectedMeme, setSelectedMeme] = useState('Affect')
+  const [selectedMeme, setSelectedMeme] = useState<MemeKey>('Affect');
   const [memeUrl, setMemeUrl] = useState('')
 
+  // Dynamically select the meme component based on selectedMeme
   const MemeComponent = memeComponents[selectedMeme]
 
   return (
@@ -64,6 +68,7 @@ export default function Home() {
         <h1 className="text-3xl font-bold mb-6">{selectedMeme} Meme</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
+            {/* Dynamically render the selected Meme Component */}
             <MemeComponent setMemeUrl={setMemeUrl} />
           </div>
           <div>
@@ -74,4 +79,5 @@ export default function Home() {
     </div>
   )
 }
+
 
