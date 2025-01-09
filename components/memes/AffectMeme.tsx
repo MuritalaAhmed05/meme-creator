@@ -13,7 +13,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import Link from "next/link";
 
 export const AffectMeme = ({ setMemeUrl }: any) => {
-  const [img, setImg] = useState("");
+  const [img, setImg] = useState("https://i.ibb.co/2FG5f5x/unnamed.webp");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
