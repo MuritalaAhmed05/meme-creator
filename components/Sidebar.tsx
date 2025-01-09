@@ -14,7 +14,7 @@ import {
   Menu,
   X,
   Upload,
-  ChevronRight
+  ChevronLeft
 } from "lucide-react";
 
 const memeTypes = [
@@ -43,7 +43,7 @@ const memeTypes = [
   { name: "Yeet the Child", icon: Zap },
 ];
 
-export const Sidebar = ({ setSelectedMeme }:any) => {
+export const Sidebar = ({ setSelectedMeme }: any) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -53,7 +53,10 @@ export const Sidebar = ({ setSelectedMeme }:any) => {
     const checkIsMobile = () => {
       const isMobileView = window.innerWidth < 768;
       setIsMobile(isMobileView);
-      setIsCollapsed(isMobileView);
+      // Don't automatically set isCollapsed here
+      if (!isMobileView) {
+        setIsOpen(false); // Reset mobile menu state when switching to desktop
+      }
     };
 
     checkIsMobile();
@@ -64,14 +67,22 @@ export const Sidebar = ({ setSelectedMeme }:any) => {
   const toggleSidebar = () => {
     if (isMobile) {
       setIsOpen(!isOpen);
+    } else {
+      setIsCollapsed(!isCollapsed);
     }
-    setIsCollapsed(!isCollapsed);
   };
 
-  const handleItemClick = (name:any) => {
+  const handleItemClick = (name: any) => {
     setSelectedItem(name);
     setSelectedMeme(name);
     if (isMobile) {
+      setIsOpen(false); // Close mobile menu after selection
+    }
+  };
+
+  // Close mobile menu when clicking outside
+  const handleOutsideClick = () => {
+    if (isMobile && isOpen) {
       setIsOpen(false);
     }
   };
@@ -81,13 +92,16 @@ export const Sidebar = ({ setSelectedMeme }:any) => {
       {/* Mobile Menu Button */}
       {isMobile && (
         <button
-          onClick={toggleSidebar}
+          onClick={(e) => {
+            e.stopPropagation(); // Prevent event from bubbling to backdrop
+            toggleSidebar();
+          }}
           className="fixed top-4 right-4 z-50 p-2 bg-gradient-to-r from-blue-600 to-indigo-800 rounded-lg shadow-md border border-gray-200"
         >
           {isOpen ? (
-            <X className="h-6 w-6 text-gray-600" />
+            <X className="h-6 w-6 text-white" />
           ) : (
-            <Menu className="h-6 w-6 text-gray-600" />
+            <Menu className="h-6 w-6 text-white" />
           )}
         </button>
       )}
@@ -96,7 +110,7 @@ export const Sidebar = ({ setSelectedMeme }:any) => {
       {isMobile && isOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-30"
-          onClick={toggleSidebar}
+          onClick={handleOutsideClick}
         />
       )}
 
@@ -104,17 +118,18 @@ export const Sidebar = ({ setSelectedMeme }:any) => {
         className={`
           fixed md:static min-h-screen bg-white border-r border-gray-200
           transition-all duration-300 ease-in-out z-40
-          ${isCollapsed && !isOpen ? '-translate-x-full md:translate-x-0 md:w-16' : 'translate-x-0 w-72'}
+          ${isMobile ? (isOpen ? 'translate-x-0' : '-translate-x-full') : 
+            (isCollapsed ? 'w-16' : 'w-72')}
         `}
       >
         {/* Desktop Toggle Button */}
         {!isMobile && (
           <button
             onClick={toggleSidebar}
-            className="absolute -right-3 top-6 p-1.5 rounded-full bg-white border border-gray-200 shadow-sm"
+            className="absolute -right-3 top-6 p-1.5 rounded-full bg-white border border-gray-200 shadow-sm hover:bg-gray-50"
           >
-            <ChevronRight
-              className={`h-4 w-4 text-gray-600 transition-transform duration-300 ${isCollapsed ? 'rotate-180' : ''}`}
+            <ChevronLeft
+              className={`h-4 w-4 text-gray-600 transition-transform duration-300 ${!isCollapsed ? 'rotate-180' : ''}`}
             />
           </button>
         )}
@@ -122,8 +137,8 @@ export const Sidebar = ({ setSelectedMeme }:any) => {
         {/* Header */}
         <div className="p-4 border-b border-gray-200 text-center bg-gradient-to-r from-blue-600 to-indigo-800">
           <h2 className={`
-            font-semibold text-gray-800 transition-opacity duration-300
-            ${isCollapsed && !isOpen ? 'opacity-0' : 'opacity-100'}
+            font-semibold text-white transition-opacity duration-300
+            ${(isCollapsed && !isMobile) || (isMobile && !isOpen) ? 'opacity-0' : 'opacity-100'}
           `}>
             Meme Generator
           </h2>
@@ -155,14 +170,14 @@ export const Sidebar = ({ setSelectedMeme }:any) => {
                
                 <span className={`
                   ml-3 text-left truncate transition-all duration-300
-                  ${isCollapsed && !isOpen ? 'w-0 opacity-0' : 'w-auto opacity-100'}
+                  ${(isCollapsed && !isMobile) || (isMobile && !isOpen) ? 'w-0 opacity-0' : 'w-auto opacity-100'}
                   ${isActive ? 'font-medium' : ''}
                 `}>
                   {item.name}
                 </span>
 
                 {/* Tooltip for collapsed state */}
-                {isCollapsed && !isMobile && !isOpen && (
+                {isCollapsed && !isMobile && (
                   <div className="
                     absolute left-full ml-2 px-2 py-1
                     bg-gray-900 text-white text-sm rounded
