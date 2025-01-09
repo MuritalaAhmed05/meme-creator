@@ -13,10 +13,12 @@ import {
   CloudLightning,
   Menu,
   X,
+  Upload,
   ChevronRight
 } from "lucide-react";
 
 const memeTypes = [
+  // { name: "ImageUpload", icon: Upload},
   { name: "Affect", icon: Smile },
   { name: "Burn the Paper", icon: Flame },
   { name: "Change My Mind", icon: Layers },
@@ -128,7 +130,7 @@ export const Sidebar = ({ setSelectedMeme }:any) => {
         </div>
 
         {/* Navigation Items */}
-        <nav className="p-2 space-y-1 bg-gradient-to-r from-blue-600 to-indigo-800 ">
+        <nav className="p-2 space-y-1 bg-gradient-to-r from-blue-600 to-indigo-800 overflow-y-auto h-screen">
           {memeTypes.map((item) => {
             const isActive = selectedItem === item.name;
             const Icon = item.icon;

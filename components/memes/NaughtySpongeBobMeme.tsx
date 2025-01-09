@@ -1,36 +1,68 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Loader2, Waves } from 'lucide-react';
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
 
-export const NaughtySpongeBobMeme = ({ setMemeUrl }:any) => {
-  const [text, setText] = useState('')
+export const NaughtySpongeBobMeme = ({ setMemeUrl }: any) => {
+  const [text, setText] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e:any) => {
-    e.preventDefault()
-    const url = `https://api.nexoracle.com/memes/naughty-sponge-bob?apikey=4aeb57e3ed0f238762&text=${encodeURIComponent(text)}`
-    setMemeUrl(url)
-  }
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+    const url = `https://api.nexoracle.com/memes/naughty-sponge-bob?apikey=4aeb57e3ed0f238762&text=${encodeURIComponent(text)}`;
+    setMemeUrl(url);
+    setLoading(false);
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white p-4 rounded-lg shadow">
-      <div className="mb-4">
-        <label htmlFor="text" className="block text-sm font-medium text-gray-700 mb-2">
-          Text
-        </label>
-        <input
-          type="text"
-          id="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-          required
-        />
-      </div>
-      <button
-        type="submit"
-        className="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      >
-        Generate Meme
-      </button>
-    </form>
-  )
-}
+    <Card className="w-full max-w-2xl mx-auto">
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <Waves className="w-5 h-5" />
+          SpongeBob Meme
+        </CardTitle>
+      </CardHeader>
 
+      <CardContent>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="space-y-2">
+            <label htmlFor="text" className="text-sm font-medium">
+              Text
+            </label>
+            <Input
+              id="text"
+              type="text"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              placeholder="Enter your text..."
+              required
+            />
+          </div>
+
+          <Button 
+            type="submit" 
+            className="w-full bg-gradient-to-r from-blue-600 to-indigo-800 hover:from-blue-700 hover:to-indigo-900"
+            disabled={loading || !text}
+          >
+            {loading ? (
+              <>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Generating...
+              </>
+            ) : (
+              'Generate Meme'
+            )}
+          </Button>
+        </form>
+      </CardContent>
+
+      <CardFooter className="text-sm text-gray-500">
+        Enter text to create a SpongeBob meme
+      </CardFooter>
+    </Card>
+  );
+};
+
+export default NaughtySpongeBobMeme;

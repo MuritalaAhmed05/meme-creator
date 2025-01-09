@@ -25,11 +25,14 @@ import { TeachingTeacherMeme } from '@/components/memes/TeachingTeacherMeme'
 import { UpsetStudentsMeme } from '@/components/memes/UpsetStudentsMeme'
 import { WritingOnBoardMeme } from '@/components/memes/WritingOnBoardMeme'
 import { YeetTheChildMeme } from '@/components/memes/YeetTheChildMeme'
+// import {UploadPage} from '@/components/memes/UrlGen'
+
 
 
 type MemeKey = keyof typeof memeComponents;
 
 const memeComponents = {
+  // 'Upload Page': UploadPage,
   'Affect': AffectMeme,
   'Burn the Paper': BurnThePaperMeme,
   'Change My Mind': ChangeMyMindMeme,
@@ -52,6 +55,7 @@ const memeComponents = {
   'Upset Students': UpsetStudentsMeme,
   'Writing on Board': WritingOnBoardMeme,
   'Yeet the Child': YeetTheChildMeme,
+  
 }
 
 export default function Home() {
@@ -79,5 +83,3 @@ export default function Home() {
     </div>
   )
 }
-
-
