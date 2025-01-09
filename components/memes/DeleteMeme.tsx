@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Loader2, Trash2 } from 'lucide-react';
+import { Loader2, Trash2, LinkIcon } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export const DeleteMeme = ({ setMemeUrl }: any) => {
   const [img, setImg] = useState('');
@@ -24,7 +25,6 @@ export const DeleteMeme = ({ setMemeUrl }: any) => {
           Delete Button Meme
         </CardTitle>
       </CardHeader>
-
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
@@ -40,9 +40,8 @@ export const DeleteMeme = ({ setMemeUrl }: any) => {
               required
             />
           </div>
-
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             className="w-full bg-gradient-to-r from-blue-600 to-indigo-800 hover:from-blue-700 hover:to-indigo-900"
             disabled={loading || !img}
           >
@@ -57,9 +56,23 @@ export const DeleteMeme = ({ setMemeUrl }: any) => {
           </Button>
         </form>
       </CardContent>
-
-      <CardFooter className="text-sm text-gray-500">
-        Enter an image URL to create a delete button meme
+      
+      <CardFooter className="flex flex-col gap-4">
+        <p className="text-sm text-gray-500">
+          Enter an image URL to create a delete button meme
+        </p>
+        
+        <div className="w-full border-t pt-4">
+          <Link href="/image-to-url">
+            <Button 
+              variant="outline" 
+              className="w-full group hover:border-blue-600 hover:text-blue-600 transition-colors"
+            >
+              <LinkIcon className="w-4 h-4 mr-2 group-hover:text-blue-600" />
+              Convert Image to URL
+            </Button>
+          </Link>
+        </div>
       </CardFooter>
     </Card>
   );

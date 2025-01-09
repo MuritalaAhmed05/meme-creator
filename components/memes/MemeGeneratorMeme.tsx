@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Loader2, Image } from 'lucide-react';
+import { Loader2, Image, LinkIcon } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export const MemeGeneratorMeme = ({ setMemeUrl }: any) => {
   const [text1, setText1] = useState('');
@@ -83,8 +84,23 @@ export const MemeGeneratorMeme = ({ setMemeUrl }: any) => {
           </Button>
         </form>
       </CardContent>
-      <CardFooter className="text-sm text-gray-500">
-        Create a custom meme by providing an image URL and two lines of text
+      
+      <CardFooter className="flex flex-col gap-4">
+        <p className="text-sm text-gray-500">
+          Create a custom meme by providing an image URL and two lines of text
+        </p>
+        
+        <div className="w-full border-t pt-4">
+          <Link href="/image-to-url">
+            <Button 
+              variant="outline" 
+              className="w-full group hover:border-blue-600 hover:text-blue-600 transition-colors"
+            >
+              <LinkIcon className="w-4 h-4 mr-2 group-hover:text-blue-600" />
+              Convert Image to URL
+            </Button>
+          </Link>
+        </div>
       </CardFooter>
     </Card>
   );

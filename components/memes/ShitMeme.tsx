@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Loader2, Trash2 } from 'lucide-react';
+import { Loader2, Trash2, LinkIcon } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export const ShitMeme = ({ setMemeUrl }: any) => {
   const [img, setImg] = useState('');
@@ -55,8 +56,23 @@ export const ShitMeme = ({ setMemeUrl }: any) => {
           </Button>
         </form>
       </CardContent>
-      <CardFooter className="text-sm text-gray-500">
-        Provide an image URL to generate a trash quality version
+      
+      <CardFooter className="flex flex-col gap-4">
+        <p className="text-sm text-gray-500">
+          Provide an image URL to generate a trash quality version
+        </p>
+        
+        <div className="w-full border-t pt-4">
+          <Link href="/image-to-url">
+            <Button 
+              variant="outline" 
+              className="w-full group hover:border-blue-600 hover:text-blue-600 transition-colors"
+            >
+              <LinkIcon className="w-4 h-4 mr-2 group-hover:text-blue-600" />
+              Convert Image to URL
+            </Button>
+          </Link>
+        </div>
       </CardFooter>
     </Card>
   );
