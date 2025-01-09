@@ -1,85 +1,79 @@
-'use client'
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { ImagePlus, Sparkles, ArrowRight } from 'lucide-react';
 
-import { useState } from 'react'
-import { Sidebar } from '@/components/Sidebar'
-import { MemePreview } from '@/components/MemePreview'
-import { AffectMeme } from '@/components/memes/AffectMeme'
-import { BurnThePaperMeme } from '@/components/memes/BurnThePaperMeme'
-import { ChangeMyMindMeme } from '@/components/memes/ChangeMyMindMeme'
-import { CheersMeme } from '@/components/memes/CheersMeme'
-import { CheaterStudentsMeme } from '@/components/memes/CheaterStudentsMeme'
-import { ChooseRoadMeme } from '@/components/memes/ChooseRoadMeme'
-import { DeleteMeme } from '@/components/memes/DeleteMeme'
-import { DisappointedBlackManMeme } from '@/components/memes/DisappointedBlackManMeme'
-import { MemeGeneratorMeme } from '@/components/memes/MemeGeneratorMeme'
-import { HitlerMeme } from '@/components/memes/HitlerMeme'
-import { MyHeartMeme } from '@/components/memes/MyHeartMeme'
-import { NaughtySpongeBobMeme } from '@/components/memes/NaughtySpongeBobMeme'
-import { NoYesMeme } from '@/components/memes/NoYesMeme'
-import { PrisonersMeme } from '@/components/memes/PrisonersMeme'
-import { SadBlackManMeme } from '@/components/memes/SadBlackManMeme'
-import { SpongeBobShoutingMeme } from '@/components/memes/SpongeBobShoutingMeme'
-import { ShitMeme } from '@/components/memes/ShitMeme'
-import { TrashMeme } from '@/components/memes/TrashMeme'
-import { TeachingTeacherMeme } from '@/components/memes/TeachingTeacherMeme'
-import { UpsetStudentsMeme } from '@/components/memes/UpsetStudentsMeme'
-import { WritingOnBoardMeme } from '@/components/memes/WritingOnBoardMeme'
-import { YeetTheChildMeme } from '@/components/memes/YeetTheChildMeme'
-// import {UploadPage} from '@/components/memes/UrlGen'
-
-
-
-type MemeKey = keyof typeof memeComponents;
-
-const memeComponents = {
-  // 'Upload Page': UploadPage,
-  'Affect': AffectMeme,
-  'Burn the Paper': BurnThePaperMeme,
-  'Change My Mind': ChangeMyMindMeme,
-  'Cheers': CheersMeme,
-  'Cheater Students': CheaterStudentsMeme,
-  'Choose Road': ChooseRoadMeme,
-  'Delete': DeleteMeme,
-  'Disappointed Black Man': DisappointedBlackManMeme,
-  'Meme Generator': MemeGeneratorMeme,
-  'Hitler': HitlerMeme,
-  'My Heart': MyHeartMeme,
-  'Naughty SpongeBob': NaughtySpongeBobMeme,
-  'No Yes': NoYesMeme,
-  'Prisoners': PrisonersMeme,
-  'Sad Black Man': SadBlackManMeme,
-  'SpongeBob Shouting': SpongeBobShoutingMeme,
-  'Shit': ShitMeme,
-  'Trash': TrashMeme,
-  'Teaching Teacher': TeachingTeacherMeme,
-  'Upset Students': UpsetStudentsMeme,
-  'Writing on Board': WritingOnBoardMeme,
-  'Yeet the Child': YeetTheChildMeme,
-  
-}
-
-export default function Home() {
-  const [selectedMeme, setSelectedMeme] = useState<MemeKey>('Affect');
-  const [memeUrl, setMemeUrl] = useState('')
-
-  // Dynamically select the meme component based on selectedMeme
-  const MemeComponent = memeComponents[selectedMeme]
-
+export default function LandingPage() {
   return (
-    <div className="flex h-screen bg-gray-100">
-      <Sidebar setSelectedMeme={setSelectedMeme} />
-      <main className="flex-1 p-6 overflow-auto">
-        <h1 className="text-3xl font-bold mb-6">{selectedMeme} Meme</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            {/* Dynamically render the selected Meme Component */}
-            <MemeComponent setMemeUrl={setMemeUrl} />
+    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-white to-blue-100">
+      <div className="container mx-auto px-4 py-16">
+        <div className="text-center space-y-6 max-w-3xl mx-auto">
+          <div className="space-y-2">
+            <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-indigo-800 text-transparent bg-clip-text">
+              MemeForge
+            </h1>
+            <p className="text-xl text-gray-600">
+              Transform your ideas into memes in seconds
+            </p>
           </div>
-          <div>
-            <MemePreview memeUrl={memeUrl} />
+
+          <div className="flex justify-center gap-4 py-8">
+            <Link href="/create-memes">
+              <Button 
+                className="group bg-gradient-to-r from-blue-600 to-indigo-800 hover:from-blue-700 hover:to-indigo-900 text-lg px-6 py-6"
+              >
+                Start Creating
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mt-16">
+            <Card className="p-6">
+              <CardContent className="space-y-2 text-center">
+                <ImagePlus className="w-12 h-12 mx-auto text-blue-600" />
+                <h3 className="text-xl font-semibold">Multiple Templates</h3>
+                <p className="text-gray-600">
+                  Choose from our growing collection of meme templates
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="p-6">
+              <CardContent className="space-y-2 text-center">
+                <Sparkles className="w-12 h-12 mx-auto text-blue-600" />
+                <h3 className="text-xl font-semibold">Easy to Use</h3>
+                <p className="text-gray-600">
+                  Simple interface to create memes in seconds
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="p-6">
+              <CardContent className="space-y-2 text-center">
+                <svg 
+                  className="w-12 h-12 mx-auto text-blue-600"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
+                  <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                  <line x1="9" y1="9" x2="9.01" y2="9" />
+                  <line x1="15" y1="9" x2="15.01" y2="9" />
+                </svg>
+                <h3 className="text-xl font-semibold">Free to Use</h3>
+                <p className="text-gray-600">
+                  Create and download memes without any cost
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
-      </main>
+      </div>
     </div>
-  )
+  );
 }
