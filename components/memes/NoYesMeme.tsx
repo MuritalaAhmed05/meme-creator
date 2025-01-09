@@ -5,8 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 export const NoYesMeme = ({ setMemeUrl }: any) => {
-  const [text1, setText1] = useState('');
-  const [text2, setText2] = useState('');
+  const [text1, setText1] = useState('Rice and Chicken');
+  const [text2, setText2] = useState('Amala and Ewedu');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: any) => {

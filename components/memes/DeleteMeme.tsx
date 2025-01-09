@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export const DeleteMeme = ({ setMemeUrl }: any) => {
-  const [img, setImg] = useState('');
+  const [img, setImg] = useState('https://i.ibb.co/jzcdPvY/Whats-App-Image-2025-01-09-at-16-05-19-10713b87.jpg');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: any) => {

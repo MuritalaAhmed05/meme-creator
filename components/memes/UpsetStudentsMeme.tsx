@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 export const UpsetStudentsMeme = ({ setMemeUrl }: any) => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState('I am dating all ur mothers');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: any) => {

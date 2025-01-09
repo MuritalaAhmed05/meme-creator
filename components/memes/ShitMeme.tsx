@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export const ShitMeme = ({ setMemeUrl }: any) => {
-  const [img, setImg] = useState('');
+  const [img, setImg] = useState('https://i.ibb.co/RyXm4qV/Whats-App-Image-2025-01-09-at-16-30-30-0cb40ffe.jpg');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: any) => {

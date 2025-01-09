@@ -5,8 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 export const DisappointedBlackManMeme = ({ setMemeUrl }: any) => {
-  const [text1, setText1] = useState('');
-  const [text2, setText2] = useState('');
+  const [text1, setText1] = useState('200000000000 USD');
+  const [text2, setText2] = useState('2.00000000000 USD');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: any) => {

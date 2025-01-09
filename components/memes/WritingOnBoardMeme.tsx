@@ -5,8 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 export const WritingOnBoardMeme = ({ setMemeUrl }: any) => {
-  const [text1, setText1] = useState('');
-  const [text2, setText2] = useState('');
+  const [text1, setText1] = useState('If HouseFly ButterFly, DragonFly can fly because they have fly in their names ');
+  const [text2, setText2] = useState('why can Bird fly');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: any) => {

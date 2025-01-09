@@ -5,8 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 export const SadBlackManMeme  = ({ setMemeUrl }: any) => {
-  const [text1, setText1] = useState('');
-  const [text2, setText2] = useState('');
+  const [text1, setText1] = useState('The house is big but...');
+  const [text2, setText2] = useState('There is no roof');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: any) => {

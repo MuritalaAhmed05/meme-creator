@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
 export const HitlerMeme = ({ setMemeUrl }: any) => {
-  const [img, setImg] = useState('');
+  const [img, setImg] = useState('https://i.ibb.co/FhVvhVh/bg.png');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: any) => {

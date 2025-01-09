@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 export const TeachingTeacherMeme = ({ setMemeUrl }: any) => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState('1 + 1 + 1 = 111');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: any) => {

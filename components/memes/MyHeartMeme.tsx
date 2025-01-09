@@ -5,9 +5,9 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
 export const MyHeartMeme = ({ setMemeUrl }: any) => {
-  const [text1, setText1] = useState('');
-  const [text2, setText2] = useState('');
-  const [text3, setText3] = useState('');
+  const [text1, setText1] = useState('MOM : 8 missed call');
+  const [text2, setText2] = useState('MOM : 10 missed call');
+  const [text3, setText3] = useState('DAD : 1 missed call');
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: any) => {
