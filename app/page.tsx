@@ -7,7 +7,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-100 via-white to-blue-100">
       <h1 className="text-center text-2xl font-bold ">Made with Love by💖 
-          <a href="https://wa.me/2349020507509" className='text-blue-600 underline'> Ahmed</a>
+          <a href="https://ahmedisawebdev.vercel.app/" target="_blank" rel="noopener noreferrer" className='text-blue-600 underline'> Ahmed</a>
         </h1>
       <div className="container mx-auto px-4 py-16">
         <div className="text-center space-y-6 max-w-3xl mx-auto">
